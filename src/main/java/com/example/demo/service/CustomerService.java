@@ -44,6 +44,14 @@ public class CustomerService implements ICustomerService {
         Customer updatedCustomer = customerRepository.save(customer);
         return modelMapper.map(updatedCustomer, CustomerDTO.class);
     }
+    @Override
+    public void deleteCustomer(Integer customerId) {
+        if (customerRepository.existsById(customerId)) {
+            customerRepository.deleteById(customerId);
+        } else {
+            throw new  ResourceNotFoundException("Customer with id "+customerId+" is not found");
+        }
+    }
 
 
 

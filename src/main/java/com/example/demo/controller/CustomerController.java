@@ -36,6 +36,11 @@ public class CustomerController {
         CustomerDTO updatedCustomer = customerService.updateCustomer(customerDTO);
         return "Customer Updated succefully !!";  //ResponseEntity.ok(updatedCustomer);
     }
-    
+    @DeleteMapping("/{customerId}")
+    public  String deleteCustomer(@PathVariable Integer customerId) {
+        customerService.deleteCustomer(customerId);
+        return "Customer Deleted";
+    }
+
 
 }
