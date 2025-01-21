@@ -10,7 +10,7 @@ public interface ICustomerService {
 //	public CustomerDTO saveCustomer(CustomerDTO customerDTO);
  
 	public List<CustomerDTO> getAllCustomers();
-
+	public CustomerDTO getCustomerById(Integer customerId);
  
  
  
