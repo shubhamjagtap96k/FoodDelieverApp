@@ -13,10 +13,5 @@ import com.example.demo.entity.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
-//	List<Rating> findByOrderRatingsReview(int a);
-	
-	//Customer findByCustomerName(String customerName);
-
-	//List<Rating> findByOrdersOrderIdRatingReview(Integer customerId);
 
 }

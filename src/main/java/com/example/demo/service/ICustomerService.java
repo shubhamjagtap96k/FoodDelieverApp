@@ -11,7 +11,9 @@ public interface ICustomerService {
  
 	public List<CustomerDTO> getAllCustomers();
 	public CustomerDTO getCustomerById(Integer customerId);
- 
+	public CustomerDTO updateCustomer(CustomerDTO customerDTO);
+	public void deleteCustomer(Integer customerId);
+
  
  
 }

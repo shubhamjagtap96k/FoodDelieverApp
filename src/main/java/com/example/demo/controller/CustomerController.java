@@ -5,10 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.dto.CustomerDTO;
 import com.example.demo.service.ICustomerService;
@@ -33,7 +30,17 @@ public class CustomerController {
         CustomerDTO customerDTO = customerService.getCustomerById(customerId);
         return ResponseEntity.ok(customerDTO);
     }
- 
-    
+    @PutMapping("/{customerId}")
+    public String updateCustomer(@PathVariable Integer customerId, @RequestBody CustomerDTO customerDTO) {
+        customerDTO.setCustomerId(customerId);
+        CustomerDTO updatedCustomer = customerService.updateCustomer(customerDTO);
+        return "Customer Updated succefully !!";  //ResponseEntity.ok(updatedCustomer);
+    }
+    @DeleteMapping("/{customerId}")
+    public  String deleteCustomer(@PathVariable Integer customerId) {
+        customerService.deleteCustomer(customerId);
+        return "Customer Deleted";
+    }
+
 
 }

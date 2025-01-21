@@ -38,6 +38,21 @@ public class CustomerService implements ICustomerService {
                 .orElseThrow(() -> new ResourceNotFoundException("Customer with id "+customerId+" is not found"));
         return modelMapper.map(customer, CustomerDTO.class);
     }
+    @Override
+    public CustomerDTO updateCustomer(CustomerDTO customerDTO) {
+        Customer customer = modelMapper.map(customerDTO, Customer.class);
+        Customer updatedCustomer = customerRepository.save(customer);
+        return modelMapper.map(updatedCustomer, CustomerDTO.class);
+    }
+    @Override
+    public void deleteCustomer(Integer customerId) {
+        if (customerRepository.existsById(customerId)) {
+            customerRepository.deleteById(customerId);
+        } else {
+            throw new  ResourceNotFoundException("Customer with id "+customerId+" is not found");
+        }
+    }
+
 
 
 
