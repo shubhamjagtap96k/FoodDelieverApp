@@ -21,6 +21,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 
 
 @Entity
@@ -43,9 +44,12 @@ public class Customer {
  
 	@Column(length = 20)
 	private String customerPhone;
-	
-//	@Column
-//	private String password;
+
+	// One customer can have many delivery addresses
+	@OneToMany(mappedBy = "customers", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<DeliveryAddresses> deliveryAddresses;
+
  
 	
  
